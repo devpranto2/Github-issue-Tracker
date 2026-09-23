@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Issue Tracker</title>
+    <title>GIT | Login</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://kit.fontawesome.com/9b013527cf.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
 </head>
 <body>
     <div class="flex min-h-screen items-center justify-center bg-slate-50 px-4">
@@ -27,18 +28,16 @@
       </p>
     </div>
 
-    <form class="mt-5 space-y-4">
+    <form  onSubmit={handleSignBtn} id="login-form" class="mt-5 space-y-4">
       <div>
+
         <label class="mb-2 block text-sm font-medium">
           Username
         </label>
 
-        <input
-          type="text"
+        <input id="user-name" type="text"
           placeholder="Enter Username"
-          class="input font-semibold input-bordered w-full"
-        />
-
+          class="input font-semibold input-bordered w-full"/>
         <p class="mt-1 text-sm font-semibold text-violet-600">
           Default: admin
         </p>
@@ -49,7 +48,7 @@
           Password
         </label>
 
-        <input
+        <input id="password"
           type="password"
           placeholder="Enter Password"
           class="input font-semibold input-bordered w-full"
@@ -61,6 +60,7 @@
       </div>
 
       <button
+       onsubmit="handleSignBtn"
         type="submit"
         class="btn w-full border-0 bg-violet-600 text-white hover:bg-violet-700"
       >
@@ -86,5 +86,7 @@
     </div>
   </div>
 </div>
+
+<script src="script/index.js"></script>
 </body>
 </html>
