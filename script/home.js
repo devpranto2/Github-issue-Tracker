@@ -9,7 +9,7 @@ const modal = document.getElementById("issue-modal");
 const modalSpinner = document.getElementById("modal-spinner");
 const modalContent = document.getElementById("modal-content");
 const closeModalBtn = document.getElementById("close-modal");
-
+const searchInput = document.getElementById("search-input");
 let allIssues = [];
 
 const showSpinner = () => {
@@ -20,6 +20,35 @@ const showSpinner = () => {
   `;
 };
 
+
+searchInput.addEventListener("input", async (e) => {
+  const searchText = e.target.value.trim();
+
+  if (searchText === "") {
+    displayIssues(allIssues);
+    return;
+  }
+
+  showSpinner();
+
+  try {
+    const response = await fetch(
+      `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${encodeURIComponent(searchText)}`
+    );
+
+    const result = await response.json();
+
+    displayIssues(result.data);
+  } catch (error) {
+    console.log(error);
+
+    issueContainer.innerHTML = `
+      <div class="col-span-full py-20 text-center text-red-500">
+        Failed to search issues.
+      </div>
+    `;
+  }
+});
 const createIssueCard = (issue) => {
   return `
     <div
@@ -118,7 +147,7 @@ const displayIssues = (issues) => {
     issueContainer.innerHTML = issues
       .map((issue) => createIssueCard(issue))
       .join("");
-  }, 500);
+  }, 300);
 };
 
 const setActiveButton = (activeButton) => {
