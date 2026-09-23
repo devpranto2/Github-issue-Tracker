@@ -1,135 +1,208 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitHub Issue Tracker</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://kit.fontawesome.com/9b013527cf.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
-</head>
-<body>
+    <script
+      src="https://kit.fontawesome.com/9b013527cf.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="shortcut icon"
+      href="assets/github-logo.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
     <section>
-        <div class="min-h-screen bg-slate-50">
+      <div class="min-h-screen bg-slate-50">
+        <div class="border-b border-slate-200 bg-white">
+          <div
+            class="mx-auto flex h-14 w-10/12 mx-auto items-center justify-between px-4"
+          >
+            <div class="flex items-center gap-2">
+              <img class="w-10" src="assets/github-logo.png" alt="" />
 
-  <div class="border-b border-slate-200 bg-white">
-    <div class="mx-auto flex h-14 w-10/12 mx-auto items-center justify-between px-4">
+              <h1 class="text-lg font-bold text-slate-800">
+                GitHub Issues Tracker
+              </h1>
+            </div>
 
-      <div class="flex items-center gap-2">
-        <img class="w-10" src="assets/github-logo.png" alt="">
+            <div class="flex items-center gap-3">
+              <div class="input input-bordered flex w-56 items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+                <input type="text" placeholder="Search issues..." />
+              </div>
 
-        <h1 class="text-lg font-bold text-slate-800">
-          GitHub Issues Tracker
-        </h1>
-      </div>
-
-      <div class="flex items-center gap-3">
-
-        <div class="input input-bordered flex w-56 items-center gap-2">
-          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
-          <input
-            type="text"
-            placeholder="Search issues..."
-          />
+              <button
+                class="btn border-0 bg-violet-600 text-white hover:bg-violet-700"
+              >
+                <i class="fa-solid fa-plus"></i>
+                New Issue
+              </button>
+            </div>
+          </div>
         </div>
 
-        <button class="btn border-0 bg-violet-600 text-white hover:bg-violet-700">
-          <i class="fa-solid fa-plus"></i>
-          New Issue
-        </button>
+        <div class="mx-auto w-10/12 px-4 py-11">
+          <div class="mb-3 rounded-lg bg-white p-4 shadow-sm">
+            <div class="flex gap-2">
+              <button
+                id="all-btn"
+                class="btn bg-violet-600 text-white hover:bg-violet-700"
+              >
+                All
+              </button>
 
-      </div>
+              <button
+                id="open-btn"
+                class="btn border border-slate-200 bg-white text-slate-600 hover:bg-slate-100"
+              >
+                Open
+              </button>
 
-    </div>
-  </div>
-
-
-  <div class="mx-auto w-10/12 px-4 py-11">
-
-    <div class="mb-3 rounded-lg bg-white p-4 shadow-sm">
-
-     <div class="flex gap-2">
-  <button
-    id="all-btn"
-    class="btn bg-violet-600 text-white hover:bg-violet-700"
-  >
-    All
-  </button>
-
-  <button
-    id="open-btn"
-    class="btn border border-slate-200 bg-white text-slate-600 hover:bg-slate-100"
-  >
-    Open
-  </button>
-
-  <button
-    id="closed-btn"
-    class="btn border border-slate-200 bg-white text-slate-600 hover:bg-slate-100"
-  >
-    Closed
-  </button>
-</div>
-
-    </div>
-
-
-    <div class="overflow-hidden rounded-lg bg-white shadow-sm">
-
-      <div class="flex items-center justify-between border-b border-slate-200 p-4">
-
-        <div class="flex items-center gap-3">
-
-          <div class="flex h-9 w-9 items-center justify-center rounded-full bg-violet-100">
-            <img src="assets/Aperture.png" alt="">
+              <button
+                id="closed-btn"
+                class="btn border border-slate-200 bg-white text-slate-600 hover:bg-slate-100"
+              >
+                Closed
+              </button>
+            </div>
           </div>
 
-          <div>
+          <div class="overflow-hidden rounded-lg bg-white shadow-sm">
+            <div
+              class="flex items-center justify-between border-b border-slate-200 p-4"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="flex h-9 w-9 items-center justify-center rounded-full bg-violet-100"
+                >
+                  <img src="assets/Aperture.png" alt="" />
+                </div>
 
-            <h2 id="issue-count" class="font-bold text-slate-800">
-              50 Issues
-            </h2>
+                <div>
+                  <h2 id="issue-count" class="font-bold text-slate-800">
+                    50 Issues
+                  </h2>
 
-            <p class="text-sm text-slate-500">
-              Track and manage your project issues
-            </p>
+                  <p class="text-sm text-slate-500">
+                    Track and manage your project issues
+                  </p>
+                </div>
+              </div>
 
+              <div class="flex gap-4 text-sm">
+                <div class="flex items-center gap-1">
+                  <div class="h-2.5 w-2.5 rounded-full bg-emerald-500"></div>
+                  <span>Open</span>
+                </div>
+
+                <div class="flex items-center gap-1">
+                  <div class="h-2.5 w-2.5 rounded-full bg-violet-500"></div>
+                  <span>Closed</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="issue-container"
+                class="grid grid-cols-1 gap-2 p-4 sm:grid-cols-2 lg:grid-cols-4"
+                >
+                <div class="col-span-full flex justify-center py-20">
+                    <span class="loading loading-spinner loading-lg text-violet-600"></span>
+                </div>
+                </div>
+            <div
+              id="issue-modal"
+              class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 px-4"
+            >
+              <div class="w-full max-w-2xl rounded-2xl bg-white p-8 shadow-xl">
+                <div
+                  id="modal-spinner"
+                  class="flex items-center justify-center py-32"
+                >
+                  <span
+                    class="loading loading-spinner loading-lg text-violet-600"
+                  ></span>
+                </div>
+
+                <div id="modal-content" class="hidden">
+                  <h2
+                    id="modal-title"
+                    class="text-2xl font-bold text-slate-800"
+                  ></h2>
+
+                  <div
+                    class="mt-2 flex items-center gap-2 text-sm text-slate-500"
+                  >
+                    <span
+                      id="modal-status"
+                      class="rounded-full px-3 py-1 font-medium"
+                    ></span>
+
+                    <span>•</span>
+
+                    <span>Opened by</span>
+                    <span id="modal-author"></span>
+
+                    <span>•</span>
+
+                    <span id="modal-date"></span>
+                  </div>
+
+                  <div
+                    id="modal-labels"
+                    class="mt-7 flex flex-wrap gap-2"
+                  ></div>
+
+                  <p
+                    id="modal-description"
+                    class="mt-7 text-base leading-6 text-slate-500"
+                  ></p>
+
+                  <div class="mt-6 grid grid-cols-2 rounded-lg bg-slate-50 p-4">
+                    <div>
+                      <p class="text-sm text-slate-500">Assignee:</p>
+
+                      <p
+                        id="modal-assignee"
+                        class="mt-1 font-semibold text-slate-800"
+                      ></p>
+                    </div>
+
+                    <div>
+                      <p class="text-sm text-slate-500">Priority:</p>
+
+                      <span
+                        id="modal-priority"
+                        class="mt-1 inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase"
+                      ></span>
+                    </div>
+                  </div>
+
+                  <div class="mt-6 flex justify-end">
+                    <button
+                      id="close-modal"
+                      class="btn border-0 bg-violet-600 text-white hover:bg-violet-700"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
         </div>
-
-
-        <div class="flex gap-4 text-sm">
-
-          <div class="flex items-center gap-1">
-            <div class="h-2.5 w-2.5 rounded-full bg-emerald-500"></div>
-            <span>Open</span>
-          </div>
-
-          <div class="flex items-center gap-1">
-            <div class="h-2.5 w-2.5 rounded-full bg-violet-500"></div>
-            <span>Closed</span>
-          </div>
-
-        </div>
-
       </div>
-
-
-      <div
-        id="issue-container"
-        class="grid grid-cols-1 gap-2 p-4 sm:grid-cols-2 lg:grid-cols-4">
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
     </section>
 
     <script src="script/home.js"></script>
-</body>
+  </body>
 </html>
